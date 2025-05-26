@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Smart Movers</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f4f4f4, #e3f2fd);
+            color: #333;
+        }
+        header {
+            background: #0056b3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 3px solid #003f7f;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            margin: 0;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 30px;
+            background: white;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ddd;
+        }
+        footer {
+            background: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-weight: bold;
+            border-top: 3px solid #003f7f;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        button {
+            background: #ff5722;
+            color: white;
+            padding: 12px 24px;
+            border: 2px solid #d84315;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Movers</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="companies.html">Browse Companies</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out to us. We are here to help you with all your logistics needs.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Smart Movers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const data = new FormData(form);
+          const jsonData = {
+            name: data.get('name'),
+            email: data.get('email'),
+            message: data.get('message'),
+          };
+
+          const response = await fetch('http://localhost:3000/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(jsonData),
+          });
+
+          if (response.ok) {
+            alert('Message sent successfully!');
+          } else {
+            alert('Something went wrong!');
+          }
+        });
+    </script>
+</body>
+</html>

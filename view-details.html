@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Details - Smart Movers</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f4f4f4, #e3f2fd);
+      color: #333;
+    }
+
+    header {
+      background: #0056b3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #003f7f;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .details-card {
+      background-color: #f9f9f9;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .details-card h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .details-card p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    .status {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    button {
+      background: #ff5722;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #e64a19;
+    }
+
+    footer {
+      background: #0056b3;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      border-top: 3px solid #003f7f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Booking Details</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="companies.html">Browse Companies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="details-card" id="booking-details">
+        <h2>Booking Information</h2>
+        <p><strong>Booking ID:</strong> <span id="booking-id">Loading...</span></p>
+        <p><strong>Company:</strong> <span id="company">Loading...</span></p>
+        <p><strong>Service Type:</strong> <span id="service">Loading...</span></p>
+        <p><strong>Status:</strong> <span class="status" id="status">Loading...</span></p>
+        <p><strong>Description:</strong> <span id="description">Fetching info...</span></p>
+        <button onclick="goBack()">Back to Dashboard</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Smart Movers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const bookingId = params.get("id");
+
+    // Dummy booking data - in real use, you'd fetch from a server or backend
+    const bookingData = {
+      "12345": {
+        company: "Swift Moves",
+        service: "Home Relocation",
+        status: "In Progress",
+        description: "Swift Moves is actively relocating your home items. ETA: 2 hrs."
+      },
+      "67890": {
+        company: "FastTrack Movers",
+        service: "Office Shifting",
+        status: "Completed",
+        description: "Office move successfully completed on April 15th."
+      },
+      "11223": {
+        company: "Auto Transport Solutions",
+        service: "Vehicle Transport",
+        status: "Completed",
+        description: "Your vehicle was delivered safely and on time."
+      }
+    };
+
+    if (bookingId && bookingData[bookingId]) {
+      const data = bookingData[bookingId];
+      document.getElementById("booking-id").textContent = bookingId;
+      document.getElementById("company").textContent = data.company;
+      document.getElementById("service").textContent = data.service;
+      document.getElementById("status").textContent = data.status;
+      document.getElementById("description").textContent = data.description;
+    } else {
+      document.getElementById("booking-details").innerHTML = `
+        <h2>Booking Not Found</h2>
+        <p>Sorry, we couldn’t find any details for this booking ID.</p>
+        <button onclick="goBack()">Back to Dashboard</button>
+      `;
+    }
+
+    function goBack() {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>

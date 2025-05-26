@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Packages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .package {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .package:hover {
+            transform: translateY(-5px);
+        }
+        .package h2 {
+            color: #007bff;
+        }
+        .package p {
+            color: #666;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="company-name">Our Logistics Packages</h1>
+
+        <div class="packages">
+            <div class="package">
+                <h2>Small Load</h2>
+                <p>Ideal for small household items or light office equipment.</p>
+                <p><strong>Starting from $50</strong></p>
+                <a href="book_now.html" class="btn">Book Now</a>
+            </div>
+            <div class="package">
+                <h2>Medium Load</h2>
+                <p>Suitable for moving furniture or medium-sized office shifting.</p>
+                <p><strong>Starting from $150</strong></p>
+                <a href="book_now.html" class="btn">Book Now</a>
+            </div>
+            <div class="package">
+                <h2>Large Load</h2>
+                <p>Best for full home or office shifting with bulk goods.</p>
+                <p><strong>Starting from $300</strong></p>
+                <a href="book_now.html" class="btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically set company name from URL
+        const params = new URLSearchParams(window.location.search);
+        const company = params.get("company");
+
+        if (company) {
+            const formatted = company.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            document.getElementById("company-name").textContent = `Packages by ${formatted}`;
+        }
+    </script>
+</body>
+</html>

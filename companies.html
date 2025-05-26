@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Companies - Smart Movers</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f4f4f4, #e3f2fd);
+            color: #333;
+        }
+        header {
+            background: #0056b3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #003f7f;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .company-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .company-card h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .company-card p {
+            margin: 10px 0;
+        }
+        .rating {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        button {
+            background: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+        footer {
+            background: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            border-top: 3px solid #003f7f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Browse Companies</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container">
+            <h2>Available Logistics Companies</h2>
+            
+            <div class="company-card">
+                <h3>Swift Moves</h3>
+                <p><strong>Category:</strong> Home Relocation</p>
+                <p><strong>Rating:</strong> <span class="rating">★★★★★</span></p>
+                <button onclick="location.href='view-details.html?id=swift-moves'">View Details</button>
+
+          </div>
+
+            <div class="company-card">
+                <h3>FastTrack Movers</h3>
+                <p><strong>Category:</strong> Office Shifting</p>
+                <p><strong>Rating:</strong> <span class="rating">★★★★☆</span></p>
+                <button onclick="location.href='view-details.html?id=fasttrack-movers'">View Details</button>
+
+            </div>
+
+            <div class="company-card">
+                <h3>Auto Transport Solutions</h3>
+                <p><strong>Category:</strong> Vehicle Transport</p>
+                <p><strong>Rating:</strong> <span class="rating">★★★★★</span></p>
+                <button onclick="location.href='view-details.html?id=auto-transport'">View Details</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Smart Movers. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function viewDetails(companyId) {
+            alert('Viewing details for ' + companyId);
+        }
+    </script>
+</body>
+</html>
